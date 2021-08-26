@@ -9,6 +9,22 @@ elif [ -n "$BASH_VERSION" ]; then
   CF_PS1_SHELL="bash"
 fi
 
+_cf_ps1_color_text() {
+    local CF_PS1_COLOR_TEXT
+    if [[ "$CF_PS1_SHELL" == "zsh" ]];then
+        CF_PS1_COLOR_TEXT="%F{$1}$2%f"
+    elif [[ "$CF_PS1_SHELL" == "bash" ]];then
+        local CF_PS1_COLOR_CODE
+        case "$1" in
+            red) CF_PS1_COLOR_CODE="31m";;
+            yellow) CF_PS1_COLOR_CODE="33m";;
+            cyan) CF_PS1_COLOR_CODE="36m";;
+        esac
+        CF_PS1_COLOR_TEXT="\[\e[0;${CF_PS1_COLOR_CODE}\]${2}\[\e[m\]"
+    fi
+    echo "$CF_PS1_COLOR_TEXT"
+}
+
 _cf_ps1_get_foundation_name() {
     CF_PS1_FOUNDATION="$(jq -r '.AuthorizationEndpoint' < $CF_PS1_CF_CONFIG | perl -p -e "s/https?:\/\///")"
     if [[ "$CF_PS1_API_ENDPOINT_FOUNDATION_POSITION" =~ ^[0-9]+$ ]]; then
@@ -39,6 +55,6 @@ _cf_ps1_init
 
 cf_ps1() {
     local CF_PS1
-    CF_PS1="(cf| $CF_PS1_FOUNDATION:$CF_PS1_ORG:$CF_PS1_SPACE)"
+    CF_PS1="(cf| $(_cf_ps1_color_text red $CF_PS1_FOUNDATION):$(_cf_ps1_color_text yellow $CF_PS1_ORG):$(_cf_ps1_color_text cyan $CF_PS1_SPACE))"
     echo "$CF_PS1"
 }

@@ -26,7 +26,7 @@ Source the cf-ps1.sh in your `~/.bashrc`
 ```sh
 CF_PS1_API_ENDPOINT_FOUNDATION_POSITION=2 # when your cf api endtpoint is https://api.foundation.example.com 
 source /path/to/cf-ps1.sh
-PS1='[\u@\h \W $(cf_ps1)]\$ '
+PS1="[\u@\h \W $(cf_ps1)]\$ "
 ```
 
 ### Zsh
