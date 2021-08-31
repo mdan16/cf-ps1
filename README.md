@@ -2,15 +2,13 @@
 
 The cf-ps1 set the current foundation and organization and space of [Cloud Foundry](https://www.cloudfoundry.org/) to your Bash/Zsh prompt.
 
-```
-(cf| foundation:organization:space) $
-```
+![prompt.png](./images/prompt.png)
 
 The cf-ps1 inspired by [kube-ps1](https://github.com/jonmosco/kube-ps1).
 
 ## Requirements
 
-- jq
+- [jq](https://stedolan.github.io/jq/)
 
 ## Supported Shell
 
@@ -43,4 +41,4 @@ PROMPT='$(cf_ps1)'$PROMPT
 
 | Variable | Format | Default | Description |
 | :--- | :--- | :--- | :--- |
-| CF_PS1_API_ENDPOINT_FOUNDATION_POSITION | integer | `false` | When a api endpoint is `https://api.foundation.example.com`, `api` will be displayed if set to `1`, `foundation` will be displayed if set to `2`. If not set, api the entire endpoint will be displayed as foundation. |
+| CF_PS1_API_ENDPOINT_FOUNDATION_POSITION | integer | `false` | When a api endpoint is `https://api.foundation.example.com`, `api` will be displayed if set to `1`, `foundation` will be displayed if set to `2`. If not set, the entire api endpoint will be displayed as foundation. |
