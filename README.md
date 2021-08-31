@@ -2,9 +2,7 @@
 
 The cf-ps1 set the current foundation and organization and space of [Cloud Foundry](https://www.cloudfoundry.org/) to your Bash/Zsh prompt.
 
-```
-(cf| foundation:organization:space) $
-```
+![prompt.png](./images/prompt.png)
 
 The cf-ps1 inspired by [kube-ps1](https://github.com/jonmosco/kube-ps1).
 
