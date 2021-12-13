@@ -53,7 +53,16 @@ _cf_ps1_init() {
 
 _cf_ps1_init
 
+cfon() {
+    CF_PS1_ENABLED="on"
+}
+
+cfoff() {
+    CF_PS1_ENABLED="off"
+}
+
 cf_ps1() {
+    [[ "$CF_PS1_ENABLED" == "off" ]] && return
     local CF_PS1
     CF_PS1="(cf| $(_cf_ps1_color_text red $CF_PS1_FOUNDATION):$(_cf_ps1_color_text yellow $CF_PS1_ORG):$(_cf_ps1_color_text cyan $CF_PS1_SPACE))"
     echo "$CF_PS1"
