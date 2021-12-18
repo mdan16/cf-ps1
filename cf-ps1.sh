@@ -1,8 +1,5 @@
 #! /usr/bin/env bash
 
-CF_PS1_HOME="${CF_HOME:-$HOME}"
-CF_PS1_API_ENDPOINT_FOUNDATION_POSITION="${CF_PS1_API_ENDPOINT_FOUNDATION_POSITION:-false}"
-
 if [ -n "$ZSH_VERSION" ]; then
   CF_PS1_SHELL="zsh"
 elif [ -n "$BASH_VERSION" ]; then
@@ -33,6 +30,8 @@ _cf_ps1_get_foundation_name() {
 }
 
 _cf_ps1_update() {
+    CF_PS1_HOME="${CF_HOME:-$HOME}"
+    CF_PS1_API_ENDPOINT_FOUNDATION_POSITION="${CF_PS1_API_ENDPOINT_FOUNDATION_POSITION:-false}"
     CF_PS1_CF_CONFIG="${CF_PS1_HOME}/.cf/config.json"
 
     _cf_ps1_get_foundation_name
