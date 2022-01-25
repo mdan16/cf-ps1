@@ -33,6 +33,9 @@ _cf_ps1_update() {
     CF_PS1_HOME="${CF_HOME:-$HOME}"
     CF_PS1_API_ENDPOINT_FOUNDATION_POSITION="${CF_PS1_API_ENDPOINT_FOUNDATION_POSITION:-false}"
     CF_PS1_CF_CONFIG="${CF_PS1_HOME}/.cf/config.json"
+    if [ ! -f "$CF_PS1_CF_CONFIG" ]; then
+        return
+    fi
 
     _cf_ps1_get_foundation_name
     CF_PS1_ORG="$(jq -r '.OrganizationFields.Name' < $CF_PS1_CF_CONFIG)"
